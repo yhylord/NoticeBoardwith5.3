@@ -1,15 +1,16 @@
 <?php
 
 $factory->define(App\Vote::class, function (Faker\Generator $faker) {
-    static $dummy_intro = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis';
+    $sentence = $faker->sentence($faker->randomDigit);
+    $title = substr($sentence, 0, strlen($sentence) - 1); // remove the trailing period
 
     return [
-        'title' => str_random(10),
+        'title' => $title,
         'user_id' => 1,
-        'intro' => $dummy_intro,
-        'end_word' => 'Thank you for your vote!',
+        'intro' => $faker->paragraph,
+        'end_word' => $faker->sentence,
         'type' => '2',
-        'started_at' => '2017-01-01',
-        'ended_at' => '2018-01-01',
+        'started_at' => $faker->dateTime,
+        'ended_at' => $faker->dateTimeBetween('+0 days', '+2 years')
     ];
 });
