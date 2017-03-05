@@ -6,7 +6,7 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
 
     return [
         'title' => $title,
-        'user_id' => App\User::inRandomOrder()->first()->id,
+        'creator_id' => App\User::inRandomOrder()->first()->id,
         'intro' => $faker->paragraph,
         'end_word' => $faker->sentence,
         'type' => '2',
