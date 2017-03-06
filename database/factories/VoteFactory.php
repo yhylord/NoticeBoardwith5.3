@@ -10,7 +10,7 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
         'intro' => $faker->text, // paragraph may exceed 255 chars
         'end_word' => $faker->sentence,
         'type' => '2',
-        'started_at' => $faker->dateTime,
+        'started_at' => $faker->dateTimeBetween('-2 years', '0 days'),
         'ended_at' => $faker->dateTimeBetween('+0 days', '+2 years')
     ];
 });
